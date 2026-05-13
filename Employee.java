@@ -5,21 +5,15 @@ public class Employee{
     public static int isFullTime=2;
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
+        int monthlySalary=0;
         Random random=new Random();
-        int attendence=random.nextInt(2);
-        System.out.println(attendence);
-        if(attendence==0){
-            System.out.println("Employee is absent");
-        }
-        else{
-            System.out.println("Employee is Present");
-        }
-        System.out.println("The Employee Can earn 160 if we work that day");
+ for(int i=0;i<20;i++){     
+ int attendence=random.nextInt(2);
 if(attendence==1){
             int workingType=random.nextInt(2)+1;
 switch (workingType) {
     case 1:
-        System.out.println("Today Employee is doing Part Time");
+        monthlySalary=monthlySalary+20*8;
         break;
 
     default:
@@ -27,5 +21,10 @@ switch (workingType) {
         break;
 }
 }
+else{
+    monthlySalary=monthlySalary+0;
+}
+ }
+ System.out.println("In 20 Days he earned "+monthlySalary);
     }
 }
