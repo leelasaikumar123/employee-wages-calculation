@@ -12,5 +12,6 @@ public class Employee{
         else{
             System.out.println("Employee is Present");
         }
+        System.out.println("The Employee Can earn 160 if we work that day");
     }
 }
