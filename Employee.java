@@ -17,12 +17,15 @@ public class Employee{
         System.out.println("The Employee Can earn 160 if we work that day");
 if(attendence==1){
             int workingType=random.nextInt(2)+1;
-        if(workingType==1){
-            System.out.println("Today employee is doing part time");
-        }
-        else{
-            System.out.println("Today Employee is doing full time");
-        }
+switch (workingType) {
+    case 1:
+        System.out.println("Today Employee is doing Part Time");
+        break;
+
+    default:
+        System.out.println("Today Employee is Full Time");
+        break;
+}
 }
     }
 }
