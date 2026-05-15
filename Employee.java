@@ -1,21 +1,36 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Employee{
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program on Master Branch"); 
-        String company=args[0];
-        int workingHours=Integer.parseInt(args[1]);
-        int workingDays=Integer.parseInt(args[2]);
-        int dailyWages=Integer.parseInt(args[3]);
-        int partTimeHours=Integer.parseInt(args[4]);
-        int fullTimeHours=Integer.parseInt(args[5]);
-        // EmployeeWagesCalculation empWages=new EmployeeWagesCalculation(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours);
-        // System.out.println(empWages.getMonthlySalarr());
-        EmpWageBuilder empWageBuilder=new EmpWageBuilder();
-        empWageBuilder.addCompanYWages(company, workingHours, workingDays, dailyWages, partTimeHours, fullTimeHours);
+ Scanner scanner = new Scanner(System.in);
+        boolean flag = true;
+  EmpWageBuilder empWageBuilder=new EmpWageBuilder();
+        while (flag) {
+            System.out.println("Enter Company Name");
+  String company=scanner.nextLine();
+            System.out.print("Enter Working Hours: ");
+            int workingHours = scanner.nextInt();
+            System.out.print("Enter Working Days: ");
+            int workingDays = scanner.nextInt();
+            System.out.print("Enter Daily Wages: ");
+            int dailyWages = scanner.nextInt();
+            System.out.print("Enter Part Time Hours: ");
+            int partTimeHours = scanner.nextInt();
+            System.out.print("Enter Full Time Hours: ");
+            int fullTimeHours = scanner.nextInt();
+            empWageBuilder.addCompanYWages(company, workingHours, workingDays, dailyWages, partTimeHours, fullTimeHours);
+            System.out.println("Do you want to continue? Type true or false: ");
+            flag = scanner.nextBoolean();
+            scanner.nextLine();
+          
+        }
+       
+        
     }
 }
-class EmployeeWagesCalculation{
+class CompanyEmpWage{
     public static Random random=new Random();
     public static int isFullTime=1;
     public static int isPartTime=2;
@@ -25,7 +40,7 @@ class EmployeeWagesCalculation{
     private int dailyWages;
     private int partTimeHours;
     private int fullTimeHours;
-    public EmployeeWagesCalculation(String company,int workingHours,int workingDays,int dailyWages,int partTimeHours,int fullTimeHours){
+    public CompanyEmpWage(String company,int workingHours,int workingDays,int dailyWages,int partTimeHours,int fullTimeHours){
  this.company=company;
  this.workingHours=workingHours;
  this.workingDays=workingDays;
@@ -62,10 +77,16 @@ worked_days++;
  }
 return monthlySalary;
    } 
+   public String getCompany(){
+    return company;
+   }
 }
 class EmpWageBuilder{
+    public static CompanyEmpWage[] array=new CompanyEmpWage[5];
+    int numberOfCompany=0;
     public void addCompanYWages(String company,int workingHours,int workingDays,int dailyWages,int partTimeHours,int fullTimeHours){
-     EmployeeWagesCalculation empWages=new EmployeeWagesCalculation(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours);
-     System.out.println(empWages.getMonthlySalarr());
+     array[numberOfCompany]=new CompanyEmpWage(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours);
+     System.out.println("The Salary of an Emploee in "+ array[numberOfCompany].getCompany()+" is: " +array[numberOfCompany].getMonthlySalarr());
+     numberOfCompany++;
     }
 }
