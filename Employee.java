@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
+import java.util.LinkedHashMap;
 public class Employee{
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program on Master Branch"); 
@@ -28,8 +28,9 @@ public class Employee{
             scanner.nextLine();
           
         }
-       
-        
+        System.out.println("enter the company name you want to check the salary");
+       String salaryOfCompanyName=scanner.nextLine();
+        empWageBuilder.getSalaryOfACompany(salaryOfCompanyName);
     }
 }
 class CompanyEmpWage{
@@ -89,11 +90,21 @@ public void addCompanYWages(String company,int workingHours,int workingDays,int 
 }
 class EmpWageBuilder implements EmpWageBuilderInterface{
     public static List<CompanyEmpWage> list=new ArrayList<>();
+    public static LinkedHashMap<String,Integer> map=new LinkedHashMap<>();
     int numberOfCompany=0;
     @Override
     public void addCompanYWages(String company,int workingHours,int workingDays,int dailyWages,int partTimeHours,int fullTimeHours){
      list.add(new CompanyEmpWage(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours));
+     map.put(company, workingHours*dailyWages);
      System.out.println("The Salary of an Emploee in "+ list.get(numberOfCompany).getCompany()+" is: " +list.get(numberOfCompany).getMonthlySalarr());
      numberOfCompany++;
+    }
+    public void getSalaryOfACompany(String companyName){
+        if(!map.containsKey(companyName)){
+            System.out.println("The Company You Searched isn't available");
+        }
+        else{
+            System.out.println("The Salary of "+companyName+" is : "+map.get(companyName));
+        }
     }
 }
