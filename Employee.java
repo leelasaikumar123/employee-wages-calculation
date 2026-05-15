@@ -81,9 +81,14 @@ return monthlySalary;
     return company;
    }
 }
-class EmpWageBuilder{
+interface  EmpWageBuilderInterface {
+public void addCompanYWages(String company,int workingHours,int workingDays,int dailyWages,int partTimeHours,int fullTimeHours);
+    
+}
+class EmpWageBuilder implements EmpWageBuilderInterface{
     public static CompanyEmpWage[] array=new CompanyEmpWage[5];
     int numberOfCompany=0;
+    @Override
     public void addCompanYWages(String company,int workingHours,int workingDays,int dailyWages,int partTimeHours,int fullTimeHours){
      array[numberOfCompany]=new CompanyEmpWage(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours);
      System.out.println("The Salary of an Emploee in "+ array[numberOfCompany].getCompany()+" is: " +array[numberOfCompany].getMonthlySalarr());
