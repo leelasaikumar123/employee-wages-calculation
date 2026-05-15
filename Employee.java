@@ -9,8 +9,10 @@ public class Employee{
         int dailyWages=Integer.parseInt(args[3]);
         int partTimeHours=Integer.parseInt(args[4]);
         int fullTimeHours=Integer.parseInt(args[5]);
-        EmployeeWagesCalculation empWages=new EmployeeWagesCalculation(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours);
-        System.out.println(empWages.getMonthlySalarr());
+        // EmployeeWagesCalculation empWages=new EmployeeWagesCalculation(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours);
+        // System.out.println(empWages.getMonthlySalarr());
+        EmpWageBuilder empWageBuilder=new EmpWageBuilder();
+        empWageBuilder.addCompanYWages(company, workingHours, workingDays, dailyWages, partTimeHours, fullTimeHours);
     }
 }
 class EmployeeWagesCalculation{
@@ -60,4 +62,10 @@ worked_days++;
  }
 return monthlySalary;
    } 
+}
+class EmpWageBuilder{
+    public void addCompanYWages(String company,int workingHours,int workingDays,int dailyWages,int partTimeHours,int fullTimeHours){
+     EmployeeWagesCalculation empWages=new EmployeeWagesCalculation(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours);
+     System.out.println(empWages.getMonthlySalarr());
+    }
 }
