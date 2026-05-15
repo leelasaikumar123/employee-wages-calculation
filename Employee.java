@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -86,12 +88,12 @@ public void addCompanYWages(String company,int workingHours,int workingDays,int 
     
 }
 class EmpWageBuilder implements EmpWageBuilderInterface{
-    public static CompanyEmpWage[] array=new CompanyEmpWage[5];
+    public static List<CompanyEmpWage> list=new ArrayList<>();
     int numberOfCompany=0;
     @Override
     public void addCompanYWages(String company,int workingHours,int workingDays,int dailyWages,int partTimeHours,int fullTimeHours){
-     array[numberOfCompany]=new CompanyEmpWage(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours);
-     System.out.println("The Salary of an Emploee in "+ array[numberOfCompany].getCompany()+" is: " +array[numberOfCompany].getMonthlySalarr());
+     list.add(new CompanyEmpWage(company,workingHours,workingDays,dailyWages,partTimeHours,fullTimeHours));
+     System.out.println("The Salary of an Emploee in "+ list.get(numberOfCompany).getCompany()+" is: " +list.get(numberOfCompany).getMonthlySalarr());
      numberOfCompany++;
     }
 }
